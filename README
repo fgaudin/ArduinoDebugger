@@ -1,0 +1,23 @@
+If you already use the serial port of an arduino to transmit data
+to a program, you can't print debug statement and watch them in the monitor.
+This uses a second arduino to forward debug data through digital pins using another
+Arduino.
+
+Upload this to an Arduino (debugger).
+
+Connect the other Arduino (sender) and the debugger gnd together.
+
+Assuming you're using pin 12 (RX) and 13 (TX) on the sender,
+connect pin 12 (sender) to pin 3 (debugger) and 13 (sender) to 2 (debugger).
+In other words, connect RX to the other TX and TX to the other RX.
+
+To debug in the sender:
+
+#include <SoftwareSerial.h>
+
+SoftwareSerial SerialDebug(12, 13); // RX, TX
+
+void setup() {
+    SerialDebug.begin(38400);
+    SerialDebug.println("Debugging");
+}
