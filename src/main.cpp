@@ -13,7 +13,7 @@ void loop() {
   if (Serial1.available()) {
     Serial.write(Serial1.read());
   }
-  // from serial USB to pin 2
+  // from serial USB to pin 3
   if (Serial.available()) {
     Serial1.write(Serial.read());
   }
